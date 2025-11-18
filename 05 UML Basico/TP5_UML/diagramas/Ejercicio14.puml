@@ -1,0 +1,29 @@
+@startuml Ejercicio14
+skinparam classAttributeIconSize 0
+hide circle
+
+class EditorVideo {
+  +exportar(formato: String, proyecto: Proyecto): void
+}
+
+class Proyecto {
+  -nombre: String
+  -duracionMin: int
+  --
+  +Proyecto(nombre: String, duracionMin: int)
+  +getNombre(): String
+  +getDuracionMin(): int
+}
+
+class Render {
+  -formato: String
+  -proyecto: Proyecto
+  --
+  +Render(formato: String, proyecto: Proyecto)
+  +getFormato(): String
+  +getProyecto(): Proyecto
+}
+
+EditorVideo ..> Proyecto
+Render *-- Proyecto
+@enduml

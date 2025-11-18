@@ -1,0 +1,44 @@
+@startuml Ejercicio4
+skinparam classAttributeIconSize 0
+hide circle
+
+class Banco {
+  -nombre: String
+  -cuit: String
+  --
+  +Banco(nombre: String, cuit: String)
+  +getNombre(): String
+  +getCuit(): String
+}
+
+class Cliente {
+  -nombre: String
+  -dni: String
+  -tarjeta: TarjetaDeCredito
+  --
+  +Cliente(nombre: String, dni: String)
+  +setTarjeta(tarjeta: TarjetaDeCredito): void
+  +getTarjeta(): TarjetaDeCredito
+  +getNombre(): String
+  +getDni(): String
+}
+
+class TarjetaDeCredito {
+  -numero: String
+  -fechaVencimiento: String
+  -banco: Banco
+  -cliente: Cliente
+  --
+  +TarjetaDeCredito(numero: String, fechaVencimiento: String)
+  +setBanco(banco: Banco): void
+  +getBanco(): Banco
+  +setCliente(cliente: Cliente): void
+  +getCliente(): Cliente
+  +getNumero(): String
+  +getFechaVencimiento(): String
+}
+
+Cliente *-- TarjetaDeCredito
+TarjetaDeCredito *-- Banco
+TarjetaDeCredito *-- Cliente
+@enduml

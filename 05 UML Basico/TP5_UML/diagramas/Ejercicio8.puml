@@ -1,0 +1,39 @@
+@startuml Ejercicio8
+skinparam classAttributeIconSize 0
+hide circle
+
+class Documento {
+  -titulo: String
+  -contenido: String
+  -firma: FirmaDigital
+  --
+  +Documento(titulo: String, contenido: String, firma: FirmaDigital)
+  +getTitulo(): String
+  +getContenido(): String
+  +getFirma(): FirmaDigital
+}
+
+class FirmaDigital {
+  -codigoHash: String
+  -fecha: String
+  -usuario: Usuario
+  --
+  +FirmaDigital(codigoHash: String, fecha: String)
+  +setUsuario(usuario: Usuario): void
+  +getUsuario(): Usuario
+  +getCodigoHash(): String
+  +getFecha(): String
+}
+
+class Usuario {
+  -nombre: String
+  -email: String
+  --
+  +Usuario(nombre: String, email: String)
+  +getNombre(): String
+  +getEmail(): String
+}
+
+Documento *-- FirmaDigital
+FirmaDigital *-- Usuario
+@enduml

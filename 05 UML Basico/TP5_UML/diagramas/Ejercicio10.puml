@@ -1,0 +1,43 @@
+@startuml Ejercicio10
+skinparam classAttributeIconSize 0
+hide circle
+
+class ClaveSeguridad {
+  -codigo: String
+  -ultimaModificacion: String
+  --
+  +ClaveSeguridad(codigo: String, ultimaModificacion: String)
+  +getCodigo(): String
+  +getUltimaModificacion(): String
+}
+
+class CuentaBancaria {
+  -cbu: String
+  -saldo: double
+  -clave: ClaveSeguridad
+  -titular: Titular
+  --
+  +CuentaBancaria(cbu: String, saldo: double, clave: ClaveSeguridad)
+  +setTitular(titular: Titular): void
+  +getCbu(): String
+  +getSaldo(): double
+  +getClave(): ClaveSeguridad
+  +getTitular(): Titular
+}
+
+class Titular {
+  -nombre: String
+  -dni: String
+  -cuenta: CuentaBancaria
+  --
+  +Titular(nombre: String, dni: String)
+  +setCuenta(cuenta: CuentaBancaria): void
+  +getCuenta(): CuentaBancaria
+  +getNombre(): String
+  +getDni(): String
+}
+
+CuentaBancaria *-- ClaveSeguridad
+CuentaBancaria *-- Titular
+Titular *-- CuentaBancaria
+@enduml

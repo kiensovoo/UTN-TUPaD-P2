@@ -1,0 +1,39 @@
+@startuml Ejercicio6
+skinparam classAttributeIconSize 0
+hide circle
+
+class Consumidor {
+  -nombre: String
+  -telefono: String
+  --
+  +Consumidor(nombre: String, telefono: String)
+  +getNombre(): String
+  +getTelefono(): String
+}
+
+class Mesa {
+  -numero: int
+  -capacidad: int
+  --
+  +Mesa(numero: int, capacidad: int)
+  +getNumero(): int
+  +getCapacidad(): int
+}
+
+class Reserva {
+  -fecha: String
+  -hora: String
+  -consumidor: Consumidor
+  -mesa: Mesa
+  --
+  +Reserva(fecha: String, hora: String, consumidor: Consumidor)
+  +setMesa(mesa: Mesa): void
+  +getFecha(): String
+  +getHora(): String
+  +getConsumidor(): Consumidor
+  +getMesa(): Mesa
+}
+
+Reserva *-- Consumidor
+Reserva *-- Mesa
+@enduml

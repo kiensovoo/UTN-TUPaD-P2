@@ -1,0 +1,43 @@
+@startuml Ejercicio5
+skinparam classAttributeIconSize 0
+hide circle
+
+class Computadora {
+  -marca: String
+  -numeroSerie: String
+  -placaMadre: PlacaMadre
+  -propietario: Propietario
+  --
+  +Computadora(marca: String, numeroSerie: String, placaMadre: PlacaMadre)
+  +setPropietario(propietario: Propietario): void
+  +getPropietario(): Propietario
+  +getMarca(): String
+  +getNumeroSerie(): String
+  +getPlacaMadre(): PlacaMadre
+}
+
+class PlacaMadre {
+  -modelo: String
+  -chipset: String
+  --
+  +PlacaMadre(modelo: String, chipset: String)
+  +getModelo(): String
+  +getChipset(): String
+}
+
+class Propietario {
+  -nombre: String
+  -dni: String
+  -computadora: Computadora
+  --
+  +Propietario(nombre: String, dni: String)
+  +setComputadora(computadora: Computadora): void
+  +getComputadora(): Computadora
+  +getNombre(): String
+  +getDni(): String
+}
+
+Computadora *-- PlacaMadre
+Computadora *-- Propietario
+Propietario *-- Computadora
+@enduml

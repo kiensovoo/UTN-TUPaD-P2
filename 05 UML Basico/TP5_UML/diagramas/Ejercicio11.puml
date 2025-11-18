@@ -1,0 +1,29 @@
+@startuml Ejercicio11
+skinparam classAttributeIconSize 0
+hide circle
+
+class Artista {
+  -nombre: String
+  -genero: String
+  --
+  +Artista(nombre: String, genero: String)
+  +getNombre(): String
+  +getGenero(): String
+}
+
+class Cancion {
+  -titulo: String
+  -artista: Artista
+  --
+  +Cancion(titulo: String, artista: Artista)
+  +getTitulo(): String
+  +getArtista(): Artista
+}
+
+class Reproductor {
+  +reproducir(cancion: Cancion): void
+}
+
+Cancion *-- Artista
+Reproductor ..> Cancion
+@enduml

@@ -1,0 +1,38 @@
+@startuml Ejercicio9
+skinparam classAttributeIconSize 0
+hide circle
+
+class CitaMedica {
+  -fecha: String
+  -hora: String
+  -paciente: Paciente
+  -profesional: Profesional
+  --
+  +CitaMedica(fecha: String, hora: String, paciente: Paciente, profesional: Profesional)
+  +getFecha(): String
+  +getHora(): String
+  +getPaciente(): Paciente
+  +getProfesional(): Profesional
+}
+
+class Paciente {
+  -nombre: String
+  -obraSocial: String
+  --
+  +Paciente(nombre: String, obraSocial: String)
+  +getNombre(): String
+  +getObraSocial(): String
+}
+
+class Profesional {
+  -nombre: String
+  -especialidad: String
+  --
+  +Profesional(nombre: String, especialidad: String)
+  +getNombre(): String
+  +getEspecialidad(): String
+}
+
+CitaMedica *-- Paciente
+CitaMedica *-- Profesional
+@enduml

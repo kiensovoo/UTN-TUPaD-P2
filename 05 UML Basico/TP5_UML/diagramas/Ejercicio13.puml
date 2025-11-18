@@ -1,0 +1,29 @@
+@startuml Ejercicio13
+skinparam classAttributeIconSize 0
+hide circle
+
+class CodigoQR {
+  -valor: String
+  -persona: Persona
+  --
+  +CodigoQR(valor: String, persona: Persona)
+  +getValor(): String
+  +getUsuario(): Persona
+}
+
+class GeneradorQR {
+  +generar(valor: String, persona: Persona): void
+}
+
+class Persona {
+  -nombre: String
+  -email: String
+  --
+  +Persona(nombre: String, email: String)
+  +getNombre(): String
+  +getEmail(): String
+}
+
+CodigoQR *-- Persona
+GeneradorQR ..> Persona
+@enduml

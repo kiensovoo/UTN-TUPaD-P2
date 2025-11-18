@@ -1,0 +1,29 @@
+@startuml Ejercicio12
+skinparam classAttributeIconSize 0
+hide circle
+
+class Calculadora {
+  +calcular(impuesto: Impuesto): void
+}
+
+class Contribuyente {
+  -nombre: String
+  -cuil: String
+  --
+  +Contribuyente(nombre: String, cuil: String)
+  +getNombre(): String
+  +getCuil(): String
+}
+
+class Impuesto {
+  -monto: double
+  -contribuyente: Contribuyente
+  --
+  +Impuesto(monto: double, contribuyente: Contribuyente)
+  +getMonto(): double
+  +getContribuyente(): Contribuyente
+}
+
+Calculadora ..> Impuesto
+Impuesto *-- Contribuyente
+@enduml

@@ -1,0 +1,22 @@
+package excepciones;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class LecturaArchivoTryResources {
+
+    public static void leer() {
+
+        try (BufferedReader br = new BufferedReader(new FileReader("texto.txt"))) {
+
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                System.out.println(linea);
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error leyendo archivo: " + e.getMessage());
+        }
+    }
+}

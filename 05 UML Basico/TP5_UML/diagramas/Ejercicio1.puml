@@ -1,0 +1,43 @@
+@startuml Ejercicio1
+skinparam classAttributeIconSize 0
+hide circle
+
+class Foto {
+  -imagen: String
+  -formato: String
+  --
+  +Foto(imagen: String, formato: String)
+  +getImagen(): String
+  +getFormato(): String
+}
+
+class Pasaporte {
+  -numero: String
+  -fechaEmision: String
+  -foto: Foto
+  -titular: Titular
+  --
+  +Pasaporte(numero: String, fechaEmision: String, foto: Foto)
+  +setTitular(titular: Titular): void
+  +getTitular(): Titular
+  +getNumero(): String
+  +getFechaEmision(): String
+  +getFoto(): Foto
+}
+
+class Titular {
+  -nombre: String
+  -dni: String
+  -pasaporte: Pasaporte
+  --
+  +Titular(nombre: String, dni: String)
+  +setPasaporte(pasaporte: Pasaporte): void
+  +getPasaporte(): Pasaporte
+  +getNombre(): String
+  +getDni(): String
+}
+
+Pasaporte *-- Foto
+Pasaporte *-- Titular
+Titular *-- Pasaporte
+@enduml

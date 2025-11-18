@@ -1,0 +1,44 @@
+@startuml Ejercicio7
+skinparam classAttributeIconSize 0
+hide circle
+
+class Conductor {
+  -nombre: String
+  -licencia: String
+  -vehiculo: Vehiculo
+  --
+  +Conductor(nombre: String, licencia: String)
+  +setVehiculo(vehiculo: Vehiculo): void
+  +getVehiculo(): Vehiculo
+  +getNombre(): String
+  +getLicencia(): String
+}
+
+class Motor {
+  -tipo: String
+  -numeroSerie: String
+  --
+  +Motor(tipo: String, numeroSerie: String)
+  +getTipo(): String
+  +getNumeroSerie(): String
+}
+
+class Vehiculo {
+  -patente: String
+  -modelo: String
+  -motor: Motor
+  -conductor: Conductor
+  --
+  +Vehiculo(patente: String, modelo: String)
+  +setMotor(motor: Motor): void
+  +setConductor(conductor: Conductor): void
+  +getMotor(): Motor
+  +getConductor(): Conductor
+  +getPatente(): String
+  +getModelo(): String
+}
+
+Conductor *-- Vehiculo
+Vehiculo *-- Motor
+Vehiculo *-- Conductor
+@enduml

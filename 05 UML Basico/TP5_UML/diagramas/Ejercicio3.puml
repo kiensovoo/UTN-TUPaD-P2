@@ -1,0 +1,39 @@
+@startuml Ejercicio3
+skinparam classAttributeIconSize 0
+hide circle
+
+class Autor {
+  -nombre: String
+  -nacionalidad: String
+  --
+  +Autor(nombre: String, nacionalidad: String)
+  +getNombre(): String
+  +getNacionalidad(): String
+}
+
+class Editorial {
+  -nombre: String
+  -direccion: String
+  --
+  +Editorial(nombre: String, direccion: String)
+  +getNombre(): String
+  +getDireccion(): String
+}
+
+class Libro {
+  -titulo: String
+  -isbn: String
+  -autor: Autor
+  -editorial: Editorial
+  --
+  +Libro(titulo: String, isbn: String, autor: Autor)
+  +setEditorial(editorial: Editorial): void
+  +getTitulo(): String
+  +getIsbn(): String
+  +getAutor(): Autor
+  +getEditorial(): Editorial
+}
+
+Libro *-- Autor
+Libro *-- Editorial
+@enduml

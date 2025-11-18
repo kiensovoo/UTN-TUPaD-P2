@@ -1,0 +1,46 @@
+@startuml Ejercicio2
+skinparam classAttributeIconSize 0
+hide circle
+
+class Bateria {
+  -modelo: String
+  -capacidad: int
+  --
+  +Bateria(modelo: String, capacidad: int)
+  +getModelo(): String
+  +getCapacidad(): int
+}
+
+class Celular {
+  -imei: String
+  -marca: String
+  -modelo: String
+  -bateria: Bateria
+  -usuario: Usuario
+  --
+  +Celular(imei: String, marca: String, modelo: String)
+  +setBateria(bateria: Bateria): void
+  +setUsuario(usuario: Usuario): void
+  +getUsuario(): Usuario
+  +getBateria(): Bateria
+  +getImei(): String
+  +getMarca(): String
+  +getModelo(): String
+}
+
+class Usuario {
+  -nombre: String
+  -dni: String
+  -celular: Celular
+  --
+  +Usuario(nombre: String, dni: String)
+  +setCelular(celular: Celular): void
+  +getCelular(): Celular
+  +getNombre(): String
+  +getDni(): String
+}
+
+Celular *-- Bateria
+Celular *-- Usuario
+Usuario *-- Celular
+@enduml
